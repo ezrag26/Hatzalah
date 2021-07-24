@@ -6,7 +6,7 @@ const Nav = () => {
 			<ul className={'flex'}>
 				{
 					[{ display: 'In Case of Emergency', href: '/in-case-of-emergency' }, { display: 'Who We Are', href: '/who-we-are' }, { display: 'Training & Resources', href: '/training-resources' }, { display: 'Donate', href: '/donate' }].map(headerItem => {
-						return <li className="header-nav-item"><a href={`${headerItem.href}`}>{headerItem.display}</a></li>
+						return <li key={headerItem.display} className="header-nav-item"><a href={`${headerItem.href}`}>{headerItem.display}</a></li>
 					})
 				}
 			</ul>
@@ -50,10 +50,10 @@ const Header = () => {
 	})
 
 	return (
-		<header>
+		<>
 			<div id={'alert-banner'}>
 				<p>We are hard at work getting ready to launch in the community. Stay tuned for more information!</p>
-				<button className={'button'}>Support Us</button>
+				<div className={'button contained white uppercase'} style={{ whiteSpace: 'nowrap' }}>Support Us</div>
 			</div>
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
 			{isSmallDisplay &&
@@ -67,12 +67,12 @@ const Header = () => {
 				<div id={'header-content'} className={`flex flex-row align-center`}>
 					<div className={'flex flex-row align-center'}>
 						<img src="/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px' }} alt={'hatzalah-wol-logo'}/>
-						<div>Hatzalah of West Orange and Livingston</div>
+						{!isSmallDisplay && <div>Hatzalah of West Orange and Livingston</div>}
 					</div>
 					{!isSmallDisplay && <Nav />}
 				</div>
 			</div>
-		</header>
+		</>
 	)
 }
 

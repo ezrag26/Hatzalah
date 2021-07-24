@@ -1,0 +1,48 @@
+.button {
+	border: none;
+	padding: .5rem 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button:hover {
+	opacity: .9;
+}
+
+.button.filled {
+	background-color: var(--primary);
+	color: white;
+}
+
+.button.filled.secondary {
+	background-color: var(--secondary);
+}
+
+.button.contained {
+	background-color: inherit;
+	border: 1px solid var(--primary);
+	color: var(--primary);
+}
+
+.button.contained.secondary {
+	border: 1px solid var(--secondary);
+	color: var(--secondary);
+}
+
+.button.contained.white {
+	border: 1px solid white;
+	color: white;
+}
+
+.button.text {
+	background-color: inherit;
+	color: var(--primary);
+}
+
+.button.stretch {
+	width: 100%;
+}
+
+.button.uppercase {
+	text-transform: uppercase;
+}

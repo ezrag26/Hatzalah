@@ -1,0 +1,49 @@
+.section {
+	padding: 2rem;
+	background-color: white;
+	text-align: center;
+}
+.section:nth-child(2n) {
+	background-color: var(--grey);
+}
+
+.section:nth-child(4n),
+.section:nth-child(4n) .title {
+	background-color: var(--primary);
+	color: white;
+}
+
+.section .title {
+	font-size: 2.5rem;
+	color: var(--primary);
+}
+
+.section .content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.section .subsection {
+	flex: 1 1 0%;
+	min-width: 200px;
+	padding: 1rem;
+}
+
+.section .subtitle {
+	font-size: 1.3rem;
+}
+
+.section .subcontent {
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+	.section .content {
+		/* width: 90%; */
+	}
+}
