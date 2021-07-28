@@ -65,10 +65,10 @@ const Header = () => {
 				</>
 			}
 				<div id={'header-content'} className={`flex flex-row align-center`}>
-					<div className={'flex flex-row align-center'}>
+					<a className={'flex flex-row align-center normalized-a'} href="/">
 						<img src="/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px' }} alt={'hatzalah-wol-logo'}/>
 						{!isSmallDisplay && <div>Hatzalah of West Orange and Livingston</div>}
-					</div>
+					</a>
 					{!isSmallDisplay && <Nav />}
 				</div>
 			</div>
