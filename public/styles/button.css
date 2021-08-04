@@ -3,6 +3,7 @@
 	padding: .5rem 1rem;
 	cursor: pointer;
 	border-radius: 5px;
+	text-align: center;
 }
 
 .button:hover {
