@@ -41,7 +41,7 @@ const Header = () => {
 	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < SMALL_DISPLAY_WIDTH)
 
 	window.addEventListener('resize', () => {
-		if (window.innerWidth > SMALL_DISPLAY_WIDTH && isSmallDisplay) {
+		if (window.innerWidth >= SMALL_DISPLAY_WIDTH && isSmallDisplay) {
 			setIsSmallDisplay(false)
 			setOpen(false)
 		} else if (window.innerWidth < SMALL_DISPLAY_WIDTH && !isSmallDisplay) {
