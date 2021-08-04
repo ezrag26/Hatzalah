@@ -13,7 +13,7 @@
 }
 
 body {
-	background-color: var(--grey);
+	background-color: white;
 }
 
 .flex {
@@ -29,6 +29,10 @@ body {
 .normalized-a {
 	text-decoration: none;
 	color: black;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 @media screen and (min-width: 475px) {
