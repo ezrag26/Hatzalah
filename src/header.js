@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Nav = () => {
 	return (
@@ -39,8 +39,15 @@ const Header = () => {
 	const SMALL_DISPLAY_WIDTH = 475
 	const [open, setOpen] = useState(false)
 	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < SMALL_DISPLAY_WIDTH)
+	const [headerSize, setHeaderSize] = useState(calcTotalElemHeight(document.querySelector('header')))
+
+	useEffect(() => {
+		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('header')) + 'px'
+	}, [])
 
 	window.addEventListener('resize', () => {
+		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('header')) + 'px'
+		
 		if (window.innerWidth >= SMALL_DISPLAY_WIDTH && isSmallDisplay) {
 			setIsSmallDisplay(false)
 			setOpen(false)
