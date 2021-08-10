@@ -35,7 +35,7 @@ body {
 	font-weight: bold;
 }
 
-@media screen and (min-width: 475px) {
+@media screen and (min-width: 600px) {
 	.flex {
 		flex-direction: row;
 	}
