@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 
+const NavItem = ({ href, display }) => {
+	return <li className="header-nav-item"><a href={href}>{display}</a></li>
+}
+
 const Nav = () => {
 	return (
 		<nav>
 			<ul className={'flex'}>
 				{
 					[{ display: 'In Case of Emergency', href: '/in-case-of-emergency' }, { display: 'Who We Are', href: '/who-we-are' }, { display: 'Training & Resources', href: '/training-resources' }, { display: 'Donate', href: '/donate' }].map(headerItem => {
-						return <li key={headerItem.display} className="header-nav-item"><a href={`${headerItem.href}`}>{headerItem.display}</a></li>
+						return <NavItem key={headerItem.display} href={headerItem.href} display={headerItem.display}/>
 					})
 				}
 			</ul>
@@ -36,24 +40,27 @@ const CurtainMenu = ({ open, setOpen }) => {
 }
 
 const Header = () => {
-	const SMALL_DISPLAY_WIDTH = 475
+	const WIDTH_BREAKPOINT = 600
 	const [open, setOpen] = useState(false)
-	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < SMALL_DISPLAY_WIDTH)
+	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < WIDTH_BREAKPOINT)
+	const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth)
 	const [headerSize, setHeaderSize] = useState(calcTotalElemHeight(document.querySelector('header')))
+	const main = document.querySelector('main')
+	const firstSection = document.querySelectorAll('.section')[0]
 
 	useEffect(() => {
-		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('header')) + 'px'
-	}, [])
+		main.style.marginTop = calcTotalElemHeight(document.querySelector('#alert-banner')) + 'px'
+		firstSection.style.paddingTop = calcTotalElemHeight(document.querySelector('#header')) + 'px'
+
+		setIsSmallDisplay(windowInnerWidth < WIDTH_BREAKPOINT)
+	}, [isSmallDisplay, windowInnerWidth])
+
+	useEffect(() => {
+		if (!isSmallDisplay) setOpen(false)
+	}, [isSmallDisplay])
 
 	window.addEventListener('resize', () => {
-		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('header')) + 'px'
-		
-		if (window.innerWidth >= SMALL_DISPLAY_WIDTH && isSmallDisplay) {
-			setIsSmallDisplay(false)
-			setOpen(false)
-		} else if (window.innerWidth < SMALL_DISPLAY_WIDTH && !isSmallDisplay) {
-			setIsSmallDisplay(true)
-		}
+		setWindowInnerWidth(window.innerWidth)
 	})
 
 	return (
@@ -73,8 +80,8 @@ const Header = () => {
 			}
 				<div id={'header-content'} className={`flex flex-row align-center`}>
 					<a className={'flex flex-row align-center normalized-a'} href="/">
-						<img src="/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px' }} alt={'hatzalah-wol-logo'}/>
-						{!isSmallDisplay && <div>Hatzalah of West Orange and Livingston</div>}
+						<img src="/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
+						{!isSmallDisplay && <div id={'company-name'}>Hatzalah of West Orange and Livingston</div>}
 					</a>
 					{!isSmallDisplay && <Nav />}
 				</div>

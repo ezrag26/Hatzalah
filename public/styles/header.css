@@ -62,8 +62,9 @@ header {
 	left: 0;
 }
 
-#header .company-name {
+#header #company-name {
 	display: none;
+	white-space: nowrap;
 }
 
 #hamburger {
@@ -187,13 +188,13 @@ footer > section p:not(:first-child) {
 }
 
 @media screen and (min-width: 850px) {
-	#header .company-name {
+	#header #company-name {
 		display: initial;
 	}
 }
 
 @media screen and (min-width: 985px) {
-	#header .company-name {
+	#header #company-name {
 		font-size: 1.5rem;
 	}
 }
