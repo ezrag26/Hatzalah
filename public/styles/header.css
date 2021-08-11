@@ -26,7 +26,6 @@ header {
 	left: 0;
 	right: 0;
 	z-index: 800;
-	border-bottom: 1px solid lightgrey;
 }
 
 #header-content {
@@ -41,6 +40,7 @@ header {
 
 #header #header-content {
 	opacity: 1;
+	border-bottom: 1px solid lightgrey;
 }
 
 #header.open #header-content {
