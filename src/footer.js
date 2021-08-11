@@ -4,7 +4,7 @@ const Footer = () => {
 	return (
 		<>
 			<section>
-				<p>Email <a href="mailto: info@hatzalahWOL.org" style={{ textDecoration: 'underline', color: 'white' }}>info@hatzalahWOL.org</a> for more information or to get involved</p>
+				<p id={'email'}>Email <a href="mailto: info@hatzalahWOL.org" style={{ textDecoration: 'underline', color: 'white' }}>info@hatzalahWOL.org</a> for more information or to get involved</p>
 			</section>
 
 			<section>
@@ -16,7 +16,7 @@ const Footer = () => {
 			</section>
 
 			<section>
-				
+
 			</section>
 		</>
 	)

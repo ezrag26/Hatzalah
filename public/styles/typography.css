@@ -1,12 +1,12 @@
-.stack > * { margin-top: 1rem; }
-.stack-small > * { margin-top: .5rem; }
-.stack-large > * { margin-top: 2rem; }
+.stack > * { margin-top: var(--spacing-medium); }
+.stack-small > * { margin-top: var(--spacing-small); }
+.stack-large > * { margin-top: var(--spacing-large); }
 
-.padding { padding: 1rem; }
-.padding-small { padding: .5rem; }
-.padding-large { padding: 2rem; }
+.padding { padding: var(--spacing-medium); }
+.padding-small { padding: var(--spacing-small); }
+.padding-large { padding: var(--spacing-large); }
 
-.font-small { font-size: .75rem }
-.font-medium { font-size: 1rem; }
-.font-large { font-size: 1.5rem; }
-.font-xlarge { font-size: 2rem; }
+.font-small { font-size: var(--font-small); }
+.font-medium { font-size: var(--font-medium); }
+.font-large { font-size: var(--font-large); }
+.font-xlarge { font-size: var(--font-xlarge); }
