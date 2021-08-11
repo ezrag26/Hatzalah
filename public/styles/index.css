@@ -6,6 +6,16 @@
 	--primary: rgba(0, 33, 88, 1);
 	--secondary: rgba(213, 44, 31, 1);
 	--grey: rgba(0, 0, 0, .1);
+
+	--font-small: .75em;
+	--font-medium: 1em;
+	--font-large: 1.5em;
+	--font-xlarge: 2em;
+
+	--spacing-small: .5em;
+	--spacing-medium: 1em;
+	--spacing-large: 1.5em;
+	--spacing-large: 2em;
 }
 
 .hidden {

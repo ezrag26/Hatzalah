@@ -26,6 +26,7 @@ header {
 	left: 0;
 	right: 0;
 	z-index: 800;
+	border-bottom: 1px solid lightgrey;
 }
 
 #header-content {
