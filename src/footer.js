@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
 	return (
 		<>
-			<section>
+			<section id={'email'}>
 				<p>Email <a href="mailto: info@hatzalahWOL.org" style={{ textDecoration: 'underline', color: 'white' }}>info@hatzalahWOL.org</a> for more information or to get involved</p>
 			</section>
 
@@ -15,9 +15,19 @@ const Footer = () => {
 				<p>Hatzalah of West Orange-Livingston, by a trademark license agreement with Chevra Hatzalah, operates as an independent volunteer ambulance service. Hatzalah of West Orange-Livingston is not under the supervision of Chevra Hatzalah. All donations to Hatzalah of West Orange-Livingston exclusively support the operations of Hatzalah of West Orange-Livingston in its primary operating area.</p>
 			</section>
 
-			<section>
-				
-			</section>
+			<div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
+
+				{/*iFrame for chimp*/}
+
+				<div style={{ display: 'flex', justifyContent: 'space-evenly', minWidth: '15%' }}>
+					<a href="https://www.facebook.com/HatzalahWOL/" target="_blank" className={'normalized-a'}>
+						<i className={'fa fa-facebook-square fa-3x'}></i>
+					</a>
+					<a href="https://www.instagram.com/hatzalahwol/" target="_blank" className={'normalized-a'}>
+						<i className={'fa fa-instagram fa-3x'}></i>
+					</a>
+				</div>
+			</div>
 		</>
 	)
 }

@@ -1,4 +1,25 @@
-footer > section:not(:first-child) {
+footer {
+	display: flex;
+	flex-direction: column;
+}
+
+footer > section {
 	width: 80%;
 	margin: 0 auto;
+	padding: 1em;
+}
+
+#email {
+	background-color: var(--primary);
+	color: white;
+	width: 100%;
+	font-size: var(--font-large);
+}
+
+footer > section p {
+	text-align: center;
+}
+
+footer > section p:not(:first-child) {
+	margin-top: 1em;
 }

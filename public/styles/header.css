@@ -40,6 +40,7 @@ header {
 
 #header #header-content {
 	opacity: 1;
+	border-bottom: 1px solid lightgrey;
 }
 
 #header.open #header-content {
@@ -108,34 +109,6 @@ ul {
 
 .header-nav-item:hover {
 	cursor: pointer;
-}
-
-footer {
-	display: flex;
-	flex-direction: column;
-}
-
-footer > section {
-	padding: 1em;
-}
-
-footer > section:nth-child(2n + 1) {
-	background-color: var(--primary);
-	color: white;
-}
-
-footer > section:nth-child(2n) {
-	/* background-color: var(--grey); */
-	color: black;
-}
-
-footer > section p {
-	text-align: center;
-}
-
-footer > section p:not(:first-child) {
-	margin-top: 1em;
-	text-align: center;
 }
 
 @media screen and (min-width: 600px) {
