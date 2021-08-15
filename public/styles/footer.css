@@ -1,25 +1,19 @@
-footer > section:not(:first-child) {
-	width: 80%;
-	margin: 0 auto;
-}
-
 footer {
 	display: flex;
 	flex-direction: column;
 }
 
 footer > section {
+	width: 80%;
+	margin: 0 auto;
 	padding: 1em;
 }
 
-footer > section:nth-child(2n + 1) {
+#email {
 	background-color: var(--primary);
 	color: white;
-}
-
-footer > section:nth-child(2n) {
-	/* background-color: var(--grey); */
-	color: black;
+	width: 100%;
+	font-size: var(--font-large);
 }
 
 footer > section p {
@@ -28,9 +22,4 @@ footer > section p {
 
 footer > section p:not(:first-child) {
 	margin-top: 1em;
-	text-align: center;
-}
-
-#email {
-	font-size: var(--font-large);
 }
