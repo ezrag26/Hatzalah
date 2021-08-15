@@ -39,18 +39,129 @@ const CurtainMenu = ({ open, setOpen }) => {
 	)
 }
 
+const pages = {
+	home: { title: 'Home', url: `/` },
+	emergency: { title: 'In Case Of Emergency', url: '/in-case-of-emergency' },
+	about: { title: 'Who We Are', url: '/who-we-are' },
+	training: { title: 'Training & Resources', url: '/training-resources' },
+	donate: { title: 'Donate', url: '/donate' }
+}
+
+const searchIndex = [
+	{
+		title: 'Saving Lives',
+		url: pages.home.url,
+		content: 'Neighbors Saving Lives 24 hours day 365 days year',
+		summary: 'Your Neighbors Saving Lives. 24 hours a day. 365 days a year.'
+	},
+	{
+		title: 'Partner with us',
+		url: pages.home.url,
+		content: 'Partner, volunteer, dispatcher',
+		summary: 'Partner with us. Dedicated to saving lives in West Orange, Livingston and the surrounding Essex County area. DONATE. Want to Volunteer? Apply to become a dispatcher'
+	},
+	{
+		title: 'We are Here for You',
+		url: pages.home.url,
+		content: 'Emergency',
+		summary: 'No Matter the Emergency, We are Here for You... Emergency Medical Response... 24/7 Emergency Dispatch... Proven First Response System'
+	},
+	{
+		title: 'Emergency Medical Response',
+		url: pages.home.url,
+		content: 'Emergency Medical Response emergency',
+		summary: 'Emergency Medical Response... Our experienced members are ready to respond to any medical emergency in Livingston, West Orange or the surrounding Essex County communities'
+	},
+	{
+		title: '24/7 Emergency Dispatch',
+		url: pages.home.url,
+		content: '24/7 Emergency Dispatching trained volunteers',
+		summary: '24/7 Emergency Dispatch... Hatzalah state of the art dispatching is staffed 24 hours a day by highly trained local volunteers'
+	},
+	{
+		title: 'Proven First Response System',
+		url: pages.home.url,
+		content: 'Proven First Response System vehicles dispatches EMTs care ambulance',
+		summary: 'Proven First Response System... Using first response vehicles, Hatzalah dispatches the closest EMTs directly to the scene so care can begin before an ambulance arrives'
+	},
+	{
+		title: 'Email us',
+		url: pages.home.url,
+		content: 'Email info@hatzalahWOL.org for more information or to get involved',
+		summary: 'Email info@hatzalahWOL.org for more information or to get involved'
+	},
+	{
+		title: 'Donate',
+		url: pages.donate.url,
+		content: 'Donate',
+		summary: '...Donate to Friends of Hatzalah of West Orange - Livingston. Prefer to write a check? Please make your donation to Friends of Hatzalah of West...'
+	},
+	{
+		title: 'Thank You for your Donation',
+		url: pages.donate.url,
+		content: 'Donate',
+		summary: 'Thank You. Thank you for your generous support of Hatzalah of West Orange and Livingston.'
+	},
+]
+
+const search = (q) => {
+	return searchIndex.reduce((acc, index) => new RegExp(q, 'gi').test(index.content) ? acc.concat(index) : acc, [])
+}
+
+const Search = ({ isOpen, close }) => {
+	const [q, setQ] = useState('')
+	const [results, setResults] = useState([])
+	const [width, setWidth] = useState('0')
+
+	useEffect(() => {
+		isOpen ? setWidth('100%') : setWidth('0')
+	}, [isOpen])
+
+	return (
+		<div className={`padding ${width === '0' ? 'hidden' : ''}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed', top: 0, right: 0, width: '100%', height: results.length ? '100%' : 'auto', backgroundColor: 'lightgrey', transition: 'width', transitionDuration: '.3s' }}>
+			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+				<i className={'fa fa-arrow-left pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
+					setResults([])
+					setQ('')
+					close()
+				}}></i>
+				<div className={'padding-small'} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '45%', backgroundColor: 'white', borderRadius: '.5em' }}>
+
+					<i className={'fa fa-search pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
+						q && setTimeout(() => setResults(search(q)), 1000 * 0.5)
+					}}></i>
+					<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%' }} placeholder={'Search this site'} />
+					{q && <i className={'fa fa-close pointer'} style={{ backgroundColor: 'inherit', border: 'none' }}  onClick={() => setQ('')}></i>}
+				</div>
+				<i className={'fa fa-arrow-left hidden'}></i>
+			</div>
+			<div className={`${results.length > 0 ? 'stack-large' : 'hidden'}`} style={{ width: '75%' }}>
+			{
+				results.map(result => {
+					return (
+						<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', backgroundColor: 'white', padding: '1em' }}>
+							<a className={'normalized-a font-large'} style={{ color: 'blue' }} href={result.url}>{result.title}</a>
+							<div className={'font-medium'}>{result.summary}</div>
+						</div>
+					)
+				})
+			}
+			</div>
+		</div>
+	)
+}
+
 const Header = () => {
 	const WIDTH_BREAKPOINT = 600
 	const [open, setOpen] = useState(false)
 	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < WIDTH_BREAKPOINT)
 	const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth)
 	const [headerSize, setHeaderSize] = useState(calcTotalElemHeight(document.querySelector('header')))
-	const main = document.querySelector('main')
-	const firstSection = document.querySelectorAll('.section')[0]
+	const [searchOpen, setSearchOpen] = useState(false)
 
 	useEffect(() => {
-		main.style.marginTop = calcTotalElemHeight(document.querySelector('#alert-banner')) + 'px'
-		firstSection.style.paddingTop = calcTotalElemHeight(document.querySelector('#header')) + 'px'
+		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('#alert-banner')) + 'px'
+		document.querySelectorAll('.section')[0].style.paddingTop = calcTotalElemHeight(document.querySelector('#header')) + 'px'
 
 		setIsSmallDisplay(windowInnerWidth < WIDTH_BREAKPOINT)
 	}, [isSmallDisplay, windowInnerWidth])
@@ -72,9 +183,9 @@ const Header = () => {
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
 			{isSmallDisplay &&
 				<>
-					<div id={'hamburger'} className={`${open ? 'open' : ''}`} onClick={e => {
+					<i id={'hamburger'} className={`fa pointer ${open ? 'fa-times open' : 'fa-bars'}`} onClick={e => {
 						setOpen(prev => !prev)
-					}}>...</div>
+					}}></i>
 					<CurtainMenu open={open} setOpen={setOpen} />
 				</>
 			}
@@ -83,7 +194,11 @@ const Header = () => {
 						<img src="/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
 						{!isSmallDisplay && <div id={'company-name'}>Hatzalah of West Orange and Livingston</div>}
 					</a>
-					{!isSmallDisplay && <Nav />}
+					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
+						{!isSmallDisplay && <Nav />}
+						<i className={'fa fa-search pointer'} onClick={() => setSearchOpen(true)}></i>
+						<Search isOpen={searchOpen} close={() => setSearchOpen(false)} />
+					</div>
 				</div>
 			</div>
 		</>

@@ -15,7 +15,7 @@
 	--spacing-small: .5em;
 	--spacing-medium: 1em;
 	--spacing-large: 1.5em;
-	--spacing-large: 2em;
+	--spacing-xlarge: 2em;
 }
 
 .hidden {
@@ -43,6 +43,11 @@ body {
 
 .bold {
 	font-weight: bold;
+}
+
+/* change cursor to pointer for all font-awesome icons */
+.fa.pointer {
+	cursor: pointer;
 }
 
 @media screen and (min-width: 600px) {
