@@ -3,7 +3,7 @@ var path = require('path')
 module.exports = {
 	mode: 'development',
 	output: {
-		path: path.resolve(__dirname, "public/dist")
+		path: path.resolve(__dirname, "docs/dist") // docs as output path since github pages only allows to serve from the root (/) or a docs (/docs) folder
 	},
 	module: {
     rules: [
@@ -20,7 +20,7 @@ module.exports = {
     ]
   },
 	devServer: {
-		contentBase: path.join(__dirname, 'public'),
+		contentBase: path.join(__dirname, 'docs'),
 		port: 9000,
 		writeToDisk: true
 	}
