@@ -17,7 +17,7 @@ const Footer = () => {
 
 			<div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
 
-				{/*iFrame for chimp*/}
+				{/*iFrame for mailchimp*/}
 
 				<div style={{ display: 'flex', justifyContent: 'space-evenly', minWidth: '15%' }}>
 					<a href="https://www.facebook.com/HatzalahWOL/" target="_blank" className={'normalized-a'}>
