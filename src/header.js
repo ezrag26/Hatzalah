@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 
 const pages = {
 	home: { title: 'Home', url: `/` },
-	emergency: { title: 'In Case Of Emergency', url: '/in-case-of-emergency' },
-	about: { title: 'Who We Are', url: '/who-we-are' },
-	training: { title: 'Training & Resources', url: '/training-resources' },
-	donate: { title: 'Donate', url: '/donate' }
+	emergency: { title: 'In Case Of Emergency', url: '/Hatzalah/in-case-of-emergency' },
+	about: { title: 'Who We Are', url: '/Hatzalah/who-we-are' },
+	training: { title: 'Training & Resources', url: '/Hatzalah/training-resources' },
+	donate: { title: 'Donate', url: '/Hatzalah/donate' }
 }
 
 const NavItem = ({ href, display }) => {
@@ -190,8 +190,8 @@ const Header = () => {
 				</>
 			}
 				<div id={'header-content'} className={`flex flex-row align-center`}>
-					<a className={'flex flex-row align-center normalized-a'} href="/">
-						<img src="/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
+					<a className={'flex flex-row align-center normalized-a'} href="/Hatzalah">
+						<img src="/Hatzalah/assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
 						{!isSmallDisplay && <div id={'company-name'}>Hatzalah of West Orange and Livingston</div>}
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
