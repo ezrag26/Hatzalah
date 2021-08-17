@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
+const pages = {
+	home: { title: 'Home', url: `/` },
+	emergency: { title: 'In Case Of Emergency', url: '/in-case-of-emergency' },
+	about: { title: 'Who We Are', url: '/who-we-are' },
+	training: { title: 'Training & Resources', url: '/training-resources' },
+	donate: { title: 'Donate', url: '/donate' }
+}
+
 const NavItem = ({ href, display }) => {
 	return <li className="header-nav-item"><a href={href}>{display}</a></li>
 }
@@ -9,8 +17,8 @@ const Nav = () => {
 		<nav>
 			<ul className={'flex'}>
 				{
-					[{ display: 'In Case of Emergency', href: '/in-case-of-emergency' }, { display: 'Who We Are', href: '/who-we-are' }, { display: 'Training & Resources', href: '/training-resources' }, { display: 'Donate', href: '/donate' }].map(headerItem => {
-						return <NavItem key={headerItem.display} href={headerItem.href} display={headerItem.display}/>
+					Object.values(pages).map(headerItem => {
+						return <NavItem key={headerItem.title} href={headerItem.url} display={headerItem.title}/>
 					})
 				}
 			</ul>
@@ -37,14 +45,6 @@ const CurtainMenu = ({ open, setOpen }) => {
 			<Nav />
 		</div>
 	)
-}
-
-const pages = {
-	home: { title: 'Home', url: `/` },
-	emergency: { title: 'In Case Of Emergency', url: '/in-case-of-emergency' },
-	about: { title: 'Who We Are', url: '/who-we-are' },
-	training: { title: 'Training & Resources', url: '/training-resources' },
-	donate: { title: 'Donate', url: '/donate' }
 }
 
 const searchIndex = [
@@ -93,13 +93,13 @@ const searchIndex = [
 	{
 		title: 'Donate',
 		url: pages.donate.url,
-		content: 'Donate',
+		content: 'Donate Friends Hatzalah West Orange Livingston write check donation',
 		summary: '...Donate to Friends of Hatzalah of West Orange - Livingston. Prefer to write a check? Please make your donation to Friends of Hatzalah of West...'
 	},
 	{
 		title: 'Thank You for your Donation',
 		url: pages.donate.url,
-		content: 'Donate',
+		content: 'Thank You support Hatzalah of West Orange and Livingston',
 		summary: 'Thank You. Thank you for your generous support of Hatzalah of West Orange and Livingston.'
 	},
 ]
@@ -110,7 +110,7 @@ const search = (q) => {
 
 const Search = ({ isOpen, close }) => {
 	const [q, setQ] = useState('')
-	const [results, setResults] = useState([])
+	const [results, setResults] = useState()
 	const [width, setWidth] = useState('0')
 
 	useEffect(() => {
@@ -118,26 +118,26 @@ const Search = ({ isOpen, close }) => {
 	}, [isOpen])
 
 	return (
-		<div className={`padding ${width === '0' ? 'hidden' : ''}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed', top: 0, right: 0, width: '100%', height: results.length ? '100%' : 'auto', backgroundColor: 'lightgrey', transition: 'width', transitionDuration: '.3s' }}>
-			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-				<i className={'fa fa-arrow-left pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
-					setResults([])
-					setQ('')
-					close()
-				}}></i>
-				<div className={'padding-small'} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '45%', backgroundColor: 'white', borderRadius: '.5em' }}>
-
+		<div id={'search-container'} className={`${width !== '0' ? 'padding' : ''}`} style={{ width, height: results ? '100%' : 'auto', transitionDuration: width !== '0' ? '.3s' : '0s' }}>
+			<div id={'search'}>
+				{/* hidden item to center the search box */}
+				<div className={'hidden'}></div>
+				<div id={'search-bar'} className={'padding-small'}>
 					<i className={'fa fa-search pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
 						q && setTimeout(() => setResults(search(q)), 1000 * 0.5)
 					}}></i>
-					<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%' }} placeholder={'Search this site'} />
+					<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%', paddingLeft: '.5em' }} placeholder={'Search this site'} />
 					{q && <i className={'fa fa-close pointer'} style={{ backgroundColor: 'inherit', border: 'none' }}  onClick={() => setQ('')}></i>}
 				</div>
-				<i className={'fa fa-arrow-left hidden'}></i>
+				<i className={'fa fa-arrow-right pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
+					setResults()
+					setQ('')
+					close()
+				}}></i>
 			</div>
-			<div className={`${results.length > 0 ? 'stack-large' : 'hidden'}`} style={{ width: '75%' }}>
+			<div className={`${results ? 'stack-large' : 'hidden'}`} style={{ width: '75%', backgroundColor: 'white' }}>
 			{
-				results.map(result => {
+				results && results.map(result => {
 					return (
 						<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', backgroundColor: 'white', padding: '1em' }}>
 							<a className={'normalized-a font-large'} style={{ color: 'blue' }} href={result.url}>{result.title}</a>
