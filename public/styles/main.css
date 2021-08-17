@@ -7,11 +7,11 @@
 	background-color: var(--grey);
 }
 
-.section:nth-child(4n),
+/* .section:nth-child(4n),
 .section:nth-child(4n) .title {
 	background-color: var(--primary);
 	color: white;
-}
+} */
 
 .section .title,
 .section .subtitle {
@@ -36,7 +36,7 @@
 .section .content {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: space-evenly;
 	align-content: flex-start;
 	margin: 0 auto;
 	padding: 1rem 0.5rem;
@@ -65,6 +65,11 @@
 	.section .content {
 		font-size: 1.2em;
 		padding: 1rem 2rem;
+	}
+
+	.section .content.narrow,
+	.section .content.quote {
+		width: 75%;
 	}
 
 	.section .subsection {
