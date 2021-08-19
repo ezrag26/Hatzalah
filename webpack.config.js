@@ -2,8 +2,13 @@ var path = require('path')
 
 module.exports = {
 	mode: 'development',
+	entry: {
+		main: "./src/index.js",
+		head: "./src/head.js"
+	},
 	output: {
-		path: path.resolve(__dirname, "docs/dist") // docs as output path since github pages only allows to serve from the root (/) or a docs (/docs) folder
+		path: path.resolve(__dirname, "docs/dist"), // docs as output path since github pages only allows to serve from the root (/) or a docs (/docs) folder
+		filename: "[name].js"
 	},
 	module: {
     rules: [
