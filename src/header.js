@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const pages = {
-	home: { title: 'Home', url: `/` },
+	home: { title: 'Home', url: `` },
 	emergency: { title: 'In Case Of Emergency', url: 'in-case-of-emergency' },
 	about: { title: 'Who We Are', url: 'who-we-are' },
 	training: { title: 'Training & Resources', url: 'training-resources' },
