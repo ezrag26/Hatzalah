@@ -37,7 +37,7 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
   \*********************/
 /***/ (() => {
 
-eval("// add base tag so that relative paths will use href + relative/path\nvar createBase = function createBase(_ref) {\n  var href = _ref.href;\n  var base = document.createElement('base');\n  base.href = href;\n  document.querySelector('head').prepend(base);\n};\n\nif (window.location.host.includes('localhost')) {\n  createBase({\n    href: 'http://localhost:9000/'\n  });\n} else if (window.location.host.includes('github.io')) {\n  createBase({\n    href: 'https://ezrag26.github.io/Hatzalah/'\n  });\n}\n\n//# sourceURL=webpack://hatzalah/./src/head.js?");
+eval("// add base tag so that relative paths will use href + relative/path\nvar createBase = function createBase(_ref) {\n  var href = _ref.href;\n  var base = document.createElement('base');\n  base.href = href;\n  document.querySelector('head').prepend(base);\n};\n\nwindow.location.host.includes('github') ? createBase({\n  href: '/Hatzalah/'\n}) : createBase({\n  href: '/'\n});\n\n//# sourceURL=webpack://hatzalah/./src/head.js?");
 
 /***/ }),
 
