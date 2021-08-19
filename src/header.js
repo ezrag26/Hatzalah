@@ -9,7 +9,8 @@ const pages = {
 }
 
 const NavItem = ({ href, display }) => {
-	return <li className="header-nav-item"><a href={href}>{display}</a></li>
+	const viewing = window.location.pathname.replaceAll('/', '') === href.replaceAll('/', '')
+	return <li className={`header-nav-item ${!viewing ? 'fade' : ''}`}><a href={href}>{display}</a></li>
 }
 
 const Nav = () => {
