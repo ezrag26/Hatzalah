@@ -5,8 +5,4 @@ const createBase = ({ href }) => {
 	document.querySelector('head').prepend(base)
 }
 
-if (window.location.host.includes('localhost')) {
-	createBase({ href: 'http://localhost:9000/' })
-} else if (window.location.host.includes('github.io')) {
-	createBase({ href: 'https://ezrag26.github.io/Hatzalah/' })
-}
+window.location.host.includes('github') ? createBase({ href: '/Hatzalah/' }) : createBase({ href: '/' })
