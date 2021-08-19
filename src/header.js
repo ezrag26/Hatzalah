@@ -9,8 +9,10 @@ const pages = {
 }
 
 const NavItem = ({ href, display }) => {
-	const viewing = window.location.pathname.replaceAll('/', '') === href.replaceAll('/', '')
-	return <li className={`header-nav-item ${!viewing ? 'fade' : ''}`}><a href={href}>{display}</a></li>
+	const baseUrl = document.querySelector('base')?.href
+	const path = window.location.href.replace(baseUrl, '')
+	const currentPage = path.replaceAll('/', '') === href
+	return <li className={`header-nav-item ${!currentPage ? 'fade' : ''}`}><a href={href}>{display}</a></li>
 }
 
 const Nav = () => {
