@@ -9,7 +9,8 @@ const pages = {
 }
 
 const NavItem = ({ href, display }) => {
-	return <li className="header-nav-item"><a href={href}>{display}</a></li>
+	const viewing = window.location.pathname.replaceAll('/', '') === href.replaceAll('/', '')
+	return <li className={`header-nav-item ${!viewing ? 'fade' : ''}`}><a href={href}>{display}</a></li>
 }
 
 const Nav = () => {
@@ -152,7 +153,7 @@ const Search = ({ isOpen, close }) => {
 }
 
 const Header = () => {
-	const WIDTH_BREAKPOINT = 600
+	const WIDTH_BREAKPOINT = 715
 	const [open, setOpen] = useState(false)
 	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < WIDTH_BREAKPOINT)
 	const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth)
@@ -178,7 +179,7 @@ const Header = () => {
 		<>
 			<div id={'alert-banner'}>
 				<p>We are hard at work getting ready to launch in the community. Stay tuned for more information!</p>
-				<div className={'button contained white uppercase'} style={{ whiteSpace: 'nowrap' }}>Support Us</div>
+				<a href={'donate'} className={'button contained white uppercase normalized-a'} style={{ whiteSpace: 'nowrap' }}>Support Us</a>
 			</div>
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
 			{isSmallDisplay &&
