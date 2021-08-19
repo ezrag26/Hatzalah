@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const pages = {
-	home: { title: 'Home', url: `/` },
+	home: { title: 'Home', url: `` },
 	emergency: { title: 'In Case Of Emergency', url: 'in-case-of-emergency' },
 	about: { title: 'Who We Are', url: 'who-we-are' },
 	training: { title: 'Training & Resources', url: 'training-resources' },
@@ -9,8 +9,10 @@ const pages = {
 }
 
 const NavItem = ({ href, display }) => {
-	const viewing = window.location.pathname.replaceAll('/', '') === href.replaceAll('/', '')
-	return <li className={`header-nav-item ${!viewing ? 'fade' : ''}`}><a href={href}>{display}</a></li>
+	const baseUrl = document.querySelector('base')?.href
+	const path = window.location.href.replace(baseUrl, '')
+	const currentPage = path.replaceAll('/', '') === href
+	return <li className={`header-nav-item ${!currentPage ? 'fade' : ''}`}><a href={href}>{display}</a></li>
 }
 
 const Nav = () => {
