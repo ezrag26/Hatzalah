@@ -153,7 +153,7 @@ const Search = ({ isOpen, close }) => {
 }
 
 const Header = () => {
-	const WIDTH_BREAKPOINT = 600
+	const WIDTH_BREAKPOINT = 715
 	const [open, setOpen] = useState(false)
 	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < WIDTH_BREAKPOINT)
 	const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth)

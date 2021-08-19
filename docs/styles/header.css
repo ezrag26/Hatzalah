@@ -93,15 +93,26 @@ ul {
 	list-style: none;
 }
 
+.header-nav-item {
+	--dark: rgba(0, 0, 0, .8);
+	--light: rgba(0, 0, 0, .6);
+}
+
 .header-nav-item a {
 	display: inline-block;
-	color: grey;
+	color: var(--dark);
+	font-weight: bold;
 	padding: 1em;
 	width: 100%;
 }
 
+.header-nav-item.fade a {
+	color: var(--light);
+	font-weight: 300;
+}
+
 .header-nav-item a:hover {
-	color: black;
+	color: var(--dark);
 }
 
 .header-nav-item {
@@ -149,7 +160,7 @@ ul {
 	border-radius: .5em;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 715px) {
 	#alert-banner {
 		flex-direction: row;
 		justify-content: center;
@@ -206,13 +217,13 @@ ul {
 	}
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 990px) {
 	#header #company-name {
 		display: initial;
 	}
 }
 
-@media screen and (min-width: 985px) {
+@media screen and (min-width: 1130px) {
 	#header #company-name {
 		font-size: 1.5rem;
 	}
