@@ -4,6 +4,7 @@
 	cursor: pointer;
 	border-radius: 5px;
 	text-align: center;
+	white-space: nowrap;
 }
 
 .button:hover {
