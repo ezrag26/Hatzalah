@@ -46,9 +46,17 @@ body {
 	font-weight: bold;
 }
 
-/* change cursor to pointer for all font-awesome icons */
-.fa.pointer {
+/* clickable font-awesome icons */
+.fa.clickable {
 	cursor: pointer;
+	padding: var(--spacing-small);
+	transition-property: background-color;
+	transition-duration: .3s;
+	border-radius: 50%;
+}
+
+.fa.clickable:active {
+	background-color: var(--grey);
 }
 
 @media screen and (min-width: 715px) {

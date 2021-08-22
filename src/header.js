@@ -114,43 +114,42 @@ const search = (q) => {
 const Search = ({ isOpen, close }) => {
 	const [q, setQ] = useState('')
 	const [results, setResults] = useState()
-	const [width, setWidth] = useState('0')
 
-	useEffect(() => {
-		isOpen ? setWidth('100%') : setWidth('0')
-	}, [isOpen])
+	const resetAndClose = () => {
+		setResults()
+		setQ('')
+		close()
+	}
 
 	return (
-		<div id={'search-container'} className={`${width !== '0' ? 'padding' : ''}`} style={{ width, height: results ? '100%' : 'auto', transitionDuration: width !== '0' ? '.3s' : '0s' }}>
-			<div id={'search'}>
-				{/* hidden item to center the search box */}
-				<div className={'hidden'}></div>
-				<div id={'search-bar'} className={'padding-small'}>
-					<i className={'fa fa-search pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
-						q && setTimeout(() => setResults(search(q)), 1000 * 0.5)
-					}}></i>
-					<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%', paddingLeft: '.5em' }} placeholder={'Search this site'} />
-					{q && <i className={'fa fa-close pointer'} style={{ backgroundColor: 'inherit', border: 'none' }}  onClick={() => setQ('')}></i>}
+		<>
+			<div className={`${isOpen ? 'overlay' : ''}`} style={{ zIndex: 'calc(var(--curtain-z) + 2)' }} onClick={resetAndClose}></div>
+			<div id={'search-container'} style={{ width: isOpen ? '100%' : '0', height: results ? '100%' : 'auto' }}>
+				<div id={'search'} className={`${isOpen ? 'padding' : ''}`} style={{ width: isOpen ? '100%' : '0', transitionDuration:  '.3s', }}>
+					<i className={'fa fa-arrow-left clickable'} onClick={resetAndClose}></i>
+					<div id={'search-bar'} className={''}>
+						<i className={'fa fa-search clickable'} onClick={() => {
+							q && setTimeout(() => setResults(search(q)), 1000 * 0.5)
+						}}></i>
+						<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%', padding: '0 .5em' }} placeholder={'Search this site'} />
+						{q && <i className={'fa fa-close clickable'}  onClick={() => setQ('')}></i>}
+					</div>
+					<div className={'hidden'}>{/* hidden item to center the search bar */}</div>
 				</div>
-				<i className={'fa fa-arrow-right pointer'} style={{ backgroundColor: 'inherit', border: 'none' }} onClick={() => {
-					setResults()
-					setQ('')
-					close()
-				}}></i>
+				<div id={`search-results`} style={{ marginTop: '1em', display: results ? 'initial' : 'none' }}>
+				{
+					results && results.map(result => {
+						return (
+							<div key={result.summary} className={'flex flex-column'}>
+								<a className={'normalized-a font-large'} style={{ color: 'blue' }} href={result.url}>{result.title}</a>
+								<div className={'font-medium'}>{result.summary}</div>
+							</div>
+						)
+					})
+				}
+				</div>
 			</div>
-			<div className={`${results ? 'stack-large' : 'hidden'}`} style={{ width: '75%', backgroundColor: 'white' }}>
-			{
-				results && results.map(result => {
-					return (
-						<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', backgroundColor: 'white', padding: '1em' }}>
-							<a className={'normalized-a font-large'} style={{ color: 'blue' }} href={result.url}>{result.title}</a>
-							<div className={'font-medium'}>{result.summary}</div>
-						</div>
-					)
-				})
-			}
-			</div>
-		</div>
+		</>
 	)
 }
 
@@ -181,12 +180,12 @@ const Header = () => {
 		<>
 			<div id={'alert-banner'}>
 				<p>We are hard at work getting ready to launch in the community. Stay tuned for more information!</p>
-				<a href={'donate'} className={'button contained white uppercase normalized-a'} style={{ whiteSpace: 'nowrap' }}>Support Us</a>
+				<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
 			</div>
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
 			{isSmallDisplay &&
 				<>
-					<i id={'hamburger'} className={`fa pointer ${open ? 'fa-times open' : 'fa-bars'}`} onClick={e => {
+					<i id={'hamburger'} className={`fa clickable ${open ? 'fa-times' : 'fa-bars'}`} onClick={e => {
 						setOpen(prev => !prev)
 					}}></i>
 					<CurtainMenu open={open} setOpen={setOpen} />
@@ -199,11 +198,12 @@ const Header = () => {
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
 						{!isSmallDisplay && <Nav />}
-						<i className={'fa fa-search pointer'} onClick={() => setSearchOpen(true)}></i>
-						<Search isOpen={searchOpen} close={() => setSearchOpen(false)} />
+						<i className={'fa fa-search clickable'} onClick={() => setSearchOpen(true)}></i>
 					</div>
 				</div>
 			</div>
+			<Search isOpen={searchOpen} close={() => setSearchOpen(false)} />
+			<div className={`${open ? 'overlay' : ''}`} onClick={() => setOpen(false)}></div>
 		</>
 	)
 }
