@@ -150,7 +150,7 @@ ul {
 }
 
 #search > :first-child {
-	padding-right: calc(var(--spacing-medium) + var(--spacing-small));
+	margin-right: var(--spacing-medium);
 }
 
 #search,
