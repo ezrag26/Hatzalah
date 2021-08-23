@@ -43,7 +43,7 @@ header {
 	background-color: white;
 	width: 100%;
 	transition-property: opacity;
-	transition-duration:  .5s;
+	transition-duration:  .15s;
 	padding: var(--spacing-small);
 	padding-left: 50px; /* 50px for hamburger button */
 }
@@ -63,8 +63,7 @@ header {
 	left: -80%;
 	bottom: 0;
 	transition-property: left;
-	transition-delay: .125s;
-	transition-duration: .5s;
+	transition-duration: .15s;
 	background-color: white;
 	padding: calc(var(--spacing-small) + 50px) var(--spacing-medium); /* 50px for hamburger button */
 }
