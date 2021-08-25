@@ -87,8 +87,7 @@
 		padding: 1rem 2rem;
 	}
 
-	.section .content.narrow,
-	.section .content.quote {
+	.section .content.narrow {
 		width: 75%;
 	}
 
