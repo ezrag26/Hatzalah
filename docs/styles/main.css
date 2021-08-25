@@ -38,7 +38,8 @@
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-content: flex-start;
-	margin: 0 auto;
+	margin-right: auto;
+	margin-left: auto;
 	padding: 1rem 0.5rem;
 }
 

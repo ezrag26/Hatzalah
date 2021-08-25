@@ -212,7 +212,7 @@ const Header = () => {
 	return (
 		<>
 			<div id={'alert-banner'}>
-				<p>We are hard at work getting ready to launch in the community. Stay tuned for more information!</p>
+				<p>In case of Emergency Dial (973) 604-4000 | Launching September 3, 2021</p>
 				<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
 			</div>
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
