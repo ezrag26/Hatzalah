@@ -46,6 +46,20 @@ body {
 	font-weight: bold;
 }
 
+.quote {
+	width: 85%;
+}
+
+.quote::before,
+.quote::after {
+	content: '\201F';
+	font-size: 3em;
+}
+
+.quote::after {
+	transform: rotateZ(180deg);
+}
+
 /* clickable font-awesome icons */
 .fa.clickable {
 	cursor: pointer;

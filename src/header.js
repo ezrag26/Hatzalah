@@ -94,6 +94,18 @@ const searchIndex = [
 		summary: 'Email info@hatzalahWOL.org for more information or to get involved'
 	},
 	{
+		title: 'In Case of Emergency',
+		url: pages.emergency.url,
+		content: 'Launching September 3 2021 (973) 604-4000',
+		summary: '24x7x365. Launching September 3, 2021. (973) 604-4000'
+	},
+	{
+		title: 'Who We Are',
+		url: pages.about.url,
+		content: 'About Hatzalah',
+		summary: 'About Hatzalah'
+	},
+	{
 		title: 'Donate',
 		url: pages.donate.url,
 		content: 'Donate Friends Hatzalah West Orange Livingston write check donation',
@@ -108,12 +120,17 @@ const searchIndex = [
 ]
 
 const search = (q) => {
-	return searchIndex.reduce((acc, index) => new RegExp(q, 'gi').test(index.content) ? acc.concat(index) : acc, [])
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(searchIndex.reduce((acc, index) => new RegExp(q, 'gi').test(index.content) ? acc.concat(index) : acc, []))
+		}, 1000 * 0.5)
+	})
 }
 
 const Search = ({ isOpen, close }) => {
 	const [q, setQ] = useState('')
 	const [results, setResults] = useState()
+	const [inFlight, setInFlight] = useState(false)
 
 	const resetAndClose = () => {
 		setResults()
@@ -128,11 +145,27 @@ const Search = ({ isOpen, close }) => {
 				<div id={'search'} className={`${isOpen ? 'padding' : ''}`} style={{ width: isOpen ? '100%' : '0', transitionDuration:  '.3s', }}>
 					<i className={'fa fa-arrow-left clickable'} onClick={resetAndClose}></i>
 					<div id={'search-bar'} className={''}>
-						<i className={'fa fa-search clickable'} onClick={() => {
-							q && setTimeout(() => setResults(search(q)), 1000 * 0.5)
+						<i className={`fa clickable ${inFlight ? 'fa-spinner fa-pulse' : 'fa-search'}`} onClick={() => {
+							if (q) {
+								setInFlight(true)
+								return search(q)
+								.then(results => {
+									setResults(results)
+									setInFlight(false)
+								})
+							}
 						}}></i>
-						<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%', padding: '0 .5em' }} placeholder={'Search this site'} />
-						{q && <i className={'fa fa-close clickable'}  onClick={() => setQ('')}></i>}
+						<input className={'font-medium'} value={q} onChange={e => setQ(e.target.value)} style={{ flexGrow: 1, outline: 'none', border: 'none', width: '100%', padding: '0 .5em' }} placeholder={'Search this site'} onKeyUp={e => {
+							if (q && e.key === 'Enter') {
+								setInFlight(true)
+								return search(q)
+								.then(results => {
+									setResults(results)
+									setInFlight(false)
+								})
+							}
+						}} />
+						{q && <i className={'fa fa-close clickable'} onClick={() => setQ('')}></i>}
 					</div>
 					<div className={'hidden'}>{/* hidden item to center the search bar */}</div>
 				</div>
@@ -179,7 +212,7 @@ const Header = () => {
 	return (
 		<>
 			<div id={'alert-banner'}>
-				<p>We are hard at work getting ready to launch in the community. Stay tuned for more information!</p>
+				<p>In case of Emergency Dial (973) 604-4000 | Launching September 3, 2021</p>
 				<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
 			</div>
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
