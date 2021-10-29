@@ -5,6 +5,7 @@
 	font-family: Optima, Platino, Raanana, Baskerville, "Malayalam MN", sans-serif;
 
 	--primary: rgba(0, 33, 88, 1);
+	--primary-light: rgb(10, 80, 133);
 	--secondary: rgba(213, 44, 31, 1);
 	--grey: rgba(0, 0, 0, .1);
 

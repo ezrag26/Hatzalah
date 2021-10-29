@@ -15,9 +15,9 @@ const NavItem = ({ href, display }) => {
 	return <li className={`header-nav-item ${!currentPage ? 'fade' : ''}`}><a href={href}>{display}</a></li>
 }
 
-const Nav = () => {
+const Nav = ({ margin }) => {
 	return (
-		<nav>
+		<nav style={{ marginTop: margin }}>
 			<ul className={'flex'}>
 				{
 					Object.values(pages).map(headerItem => {
@@ -44,8 +44,8 @@ const calcTotalElemHeight = (elem) => {
 
 const CurtainMenu = ({ open, setOpen }) => {
 	return (
-		<div id={'curtain'} style={{ top: calcTotalElemHeight(document.getElementById('alert-banner')) }} className={`flex ${open ? 'open' : ''}`}>
-			<Nav />
+		<div id={'curtain'} style={{ top: 0 }} className={`flex ${open ? 'open' : ''}`}>
+			<Nav margin={calcTotalElemHeight(document.getElementById('alert-banner'))}/>
 		</div>
 	)
 }
@@ -211,11 +211,8 @@ const Header = () => {
 
 	return (
 		<>
-			<div id={'alert-banner'}>
-				<p>In case of Emergency Dial (973) 604-4000 | Launching September 3, 2021</p>
-				<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
-			</div>
-			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`}>
+
+			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`} style={{ height: '150px' }}>
 			{isSmallDisplay &&
 				<>
 					<i id={'hamburger'} className={`fa clickable ${open ? 'fa-times' : 'fa-bars'}`} onClick={e => {
@@ -224,18 +221,21 @@ const Header = () => {
 					<CurtainMenu open={open} setOpen={setOpen} />
 				</>
 			}
-				<div id={'header-content'} className={`flex flex-row align-center`}>
+				<div id={'header-content'} className={`flex flex-row align-center`} style={{ height: '100%' }}>
 					<a className={'flex flex-row align-center normalized-a'} href={pages.home.url}>
 						<img src="assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
-						{!isSmallDisplay && <div id={'company-name'}>Hatzalah of West Orange and Livingston</div>}
+						{!isSmallDisplay && <div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>}
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
 						{!isSmallDisplay && <Nav />}
-						<i className={'fa fa-search clickable'} onClick={() => setSearchOpen(true)}></i>
 					</div>
 				</div>
+				<div id={'alert-banner'} style={{ height: '100%' }}>
+					<p>Emergency: 973-604-4000</p>
+					<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
+				</div>
 			</div>
-			<Search isOpen={searchOpen} close={() => setSearchOpen(false)} />
+
 			<div className={`${open ? 'overlay' : ''}`} onClick={() => setOpen(false)}></div>
 		</>
 	)

@@ -12,7 +12,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	background-color: var(--secondary);
+	background-color: var(--primary-light);
 	color: white;
 	height: 6em;
 }
@@ -36,21 +36,19 @@ header {
 	right: 0;
 	z-index: calc(var(--curtain-z) - 2);
 	--curtain-z: 900;
+	box-shadow: 0px 0px 12px -5px black;
 }
 
 #header-content {
-	justify-content: space-between;
 	background-color: white;
-	width: 100%;
 	transition-property: opacity;
 	transition-duration:  0.25s;
 	padding: var(--spacing-small);
-	padding-left: 50px; /* 50px for hamburger button */
+	padding-right: 50px; /* 50px for hamburger button */
 }
 
 #header #header-content {
 	opacity: 1;
-	border-bottom: 1px solid lightgrey;
 }
 
 #header.open #header-content {
@@ -60,16 +58,16 @@ header {
 #header #curtain {
 	z-index: var(--curtain-z);
 	position: fixed;
-	left: -80%;
+	right: -80%;
 	bottom: 0;
-	transition-property: left;
+	transition-property: right;
 	transition-duration: 0.25s;
 	background-color: white;
 	padding: calc(var(--spacing-small) + 50px) var(--spacing-medium); /* 50px for hamburger button */
 }
 
 #header.open #curtain {
-	left: 0;
+	right: 0;
 }
 
 #header #company-name {
@@ -83,7 +81,7 @@ header {
 	align-items: center;
 	z-index: calc(var(--curtain-z) + 1);
 	position: absolute;
-	left: 0;
+	right: 0;
 	width: 50px;
 	height: 50px;
 	cursor: pointer;
@@ -121,7 +119,7 @@ ul {
 }
 
 .header-nav-item a:hover {
-	color: var(--dark);
+	color: rgb(0, 174, 239);
 }
 
 .header-nav-item {
@@ -188,15 +186,14 @@ ul {
 @media screen and (min-width: 450px) {
 	#alert-banner {
 		flex-direction: row;
-		justify-content: center;
+		/* flex-grow: 1; */
 		padding: 0 .75em;
-		height: 4em;
 	}
 
 	#alert-banner > p {
 		padding: 0;
 		width: auto;
-		white-space: normal;
+		white-space: nowrap;
 		text-overflow: clip;
 		overflow: auto;
 	}
@@ -235,6 +232,14 @@ ul {
 		padding: var(--spacing-small);
 	}
 
+	#header {
+		justify-content: space-between;
+	}
+
+	#alert-banner {
+		padding: 0 2em;
+	}
+
 	nav {
 		width: auto;
 	}
@@ -244,7 +249,7 @@ ul {
 	}
 
 	.header-nav-item:not(:last-child) {
-		margin-right: 1em;
+		margin-right: .5em;
 	}
 }
 
@@ -256,6 +261,6 @@ ul {
 
 @media screen and (min-width: 1130px) {
 	#header #company-name {
-		font-size: var(--font-large);
+		font-size: var(--font-medium);
 	}
 }
