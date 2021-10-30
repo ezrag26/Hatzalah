@@ -7,7 +7,7 @@
 	height: 100%;
 }
 
-#alert-banner {
+#header__secondary {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -17,12 +17,12 @@
 	height: 6em;
 }
 
-#alert-banner > * {
+#header__secondary > * {
 	white-space: nowrap;
 	font-size: 1em;
 }
 
-#alert-banner p {
+#header__secondary p {
 	padding: 0 var(--spacing-small);
 	width: 100%;
 	overflow: hidden;
@@ -39,31 +39,23 @@ header {
 	box-shadow: 0px 0px 12px -5px black;
 }
 
-#header-content {
+#header__main {
 	background-color: white;
 	transition-property: opacity;
 	transition-duration:  0.25s;
 	padding: var(--spacing-small);
-	padding-right: 50px; /* 50px for hamburger button */
+	width: 100%;
 }
 
-#header #header-content {
-	opacity: 1;
-}
-
-#header.open #header-content {
-	opacity: 0;
-}
-
-#header #curtain {
+#curtain {
 	z-index: var(--curtain-z);
 	position: fixed;
 	right: -80%;
 	bottom: 0;
 	transition-property: right;
 	transition-duration: 0.25s;
-	background-color: white;
-	padding: calc(var(--spacing-small) + 50px) var(--spacing-medium); /* 50px for hamburger button */
+	background-color: var(--primary);
+	padding: var(--spacing-small) var(--spacing-xlarge);
 }
 
 #header.open #curtain {
@@ -73,18 +65,6 @@ header {
 #header #company-name {
 	display: none;
 	white-space: nowrap;
-}
-
-#hamburger {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: calc(var(--curtain-z) + 1);
-	position: absolute;
-	right: 0;
-	width: 50px;
-	height: 50px;
-	cursor: pointer;
 }
 
 nav {
@@ -103,6 +83,15 @@ ul {
 .header-nav-item {
 	--dark: rgba(0, 0, 0, .8);
 	--light: rgba(0, 0, 0, .6);
+}
+
+#curtain .header-nav-item {
+	--dark: rgba(255, 255, 255, 1);
+	--light: rgba(255, 255, 255, .8);
+}
+
+#curtain .header-nav-item:not(:last-child) {
+	border-bottom: 1px solid rgba(255, 255, 255, .3);
 }
 
 .header-nav-item a {
@@ -184,13 +173,13 @@ ul {
 }
 
 @media screen and (min-width: 450px) {
-	#alert-banner {
+	#header__secondary {
 		flex-direction: row;
 		/* flex-grow: 1; */
 		padding: 0 .75em;
 	}
 
-	#alert-banner > p {
+	#header__secondary > p {
 		padding: 0;
 		width: auto;
 		white-space: nowrap;
@@ -198,7 +187,7 @@ ul {
 		overflow: auto;
 	}
 
-	#alert-banner > .button {
+	#header__secondary > .button {
 		margin: 0;
 		margin-left: var(--spacing-large);
 	}
@@ -217,7 +206,7 @@ ul {
 		width: 75%;
 	}
 
-	#header-content {
+	#header__main {
 		padding-left: var(--spacing-small);
 	}
 
@@ -236,7 +225,7 @@ ul {
 		justify-content: space-between;
 	}
 
-	#alert-banner {
+	#header__secondary {
 		padding: 0 2em;
 	}
 

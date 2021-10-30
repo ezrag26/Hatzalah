@@ -45,7 +45,7 @@ const calcTotalElemHeight = (elem) => {
 const CurtainMenu = ({ open, setOpen }) => {
 	return (
 		<div id={'curtain'} style={{ top: 0 }} className={`flex ${open ? 'open' : ''}`}>
-			<Nav margin={calcTotalElemHeight(document.getElementById('alert-banner'))}/>
+			<Nav margin={calcTotalElemHeight(document.getElementById('header__main'))}/>
 		</div>
 	)
 }
@@ -186,6 +186,19 @@ const Search = ({ isOpen, close }) => {
 	)
 }
 
+const Hamburger = ({ open, toggle }) => {
+	return (
+		<div id="hamburger" onClick={toggle}>
+			<div id="bar__top" className={`bar ${open ? 'collapse' : 'delay'}`}></div>
+			<div id="bar__middle" className="" style={{ width: '100%' }}>
+				<div id="bar__middle--back" className={`bar ${open ? 'rotate--clockwise delay' : ''}`}></div>
+				<div id="bar__middle--front" className={`bar ${open ? 'rotate--counter-clockwise delay' : ''}`}></div>
+			</div>
+			<div id="bar__bottom" className={`bar ${open ? 'collapse' : 'delay'}`}></div>
+		</div>
+	)
+}
+
 const Header = () => {
 	const WIDTH_BREAKPOINT = 715
 	const [open, setOpen] = useState(false)
@@ -195,7 +208,7 @@ const Header = () => {
 	const [searchOpen, setSearchOpen] = useState(false)
 
 	useEffect(() => {
-		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('#alert-banner')) + 'px'
+		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('#header__secondary')) + 'px'
 		document.querySelectorAll('.section')[0].style.paddingTop = calcTotalElemHeight(document.querySelector('#header')) + 'px'
 
 		setIsSmallDisplay(windowInnerWidth < WIDTH_BREAKPOINT)
@@ -211,31 +224,30 @@ const Header = () => {
 
 	return (
 		<>
-
 			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`} style={{ height: '150px' }}>
-			{isSmallDisplay &&
-				<>
-					<i id={'hamburger'} className={`fa clickable ${open ? 'fa-times' : 'fa-bars'}`} onClick={e => {
-						setOpen(prev => !prev)
-					}}></i>
-					<CurtainMenu open={open} setOpen={setOpen} />
-				</>
-			}
-				<div id={'header-content'} className={`flex flex-row align-center`} style={{ height: '100%' }}>
+				<div id={'header__main'} className={`flex flex-row align-center`} style={{ height: '100%' }}>
 					<a className={'flex flex-row align-center normalized-a'} href={pages.home.url}>
 						<img src="assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
-						{!isSmallDisplay && <div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>}
+						<div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
 						{!isSmallDisplay && <Nav />}
 					</div>
 				</div>
-				<div id={'alert-banner'} style={{ height: '100%' }}>
-					<p>Emergency: 973-604-4000</p>
-					<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
-				</div>
+				{
+					!isSmallDisplay &&
+					<div id={'header__secondary'} style={{ height: '100%' }}>
+						<p>Emergency: 973-604-4000</p>
+						<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
+					</div>
+				}
+				{isSmallDisplay &&
+					<>
+						<Hamburger open={open} toggle={() => setOpen(!open)}/>
+						<CurtainMenu open={open} setOpen={setOpen} />
+					</>
+				}
 			</div>
-
 			<div className={`${open ? 'overlay' : ''}`} onClick={() => setOpen(false)}></div>
 		</>
 	)
