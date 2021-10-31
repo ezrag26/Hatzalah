@@ -208,7 +208,6 @@ const Header = () => {
 	const [searchOpen, setSearchOpen] = useState(false)
 
 	useEffect(() => {
-		document.querySelector('main').style.marginTop = calcTotalElemHeight(document.querySelector('#header__secondary')) + 'px'
 		document.querySelectorAll('.section')[0].style.paddingTop = calcTotalElemHeight(document.querySelector('#header')) + 'px'
 
 		setIsSmallDisplay(windowInnerWidth < WIDTH_BREAKPOINT)
