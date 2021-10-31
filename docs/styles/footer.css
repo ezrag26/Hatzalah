@@ -1,6 +1,7 @@
 footer {
 	display: flex;
 	flex-direction: column;
+	background-color: white;
 }
 
 footer > section {
@@ -9,9 +10,12 @@ footer > section {
 	padding: 1em;
 }
 
+footer a {
+	text-decoration: underline;
+	color: var(--primary);
+}
+
 #email {
-	background-color: var(--primary);
-	color: white;
 	width: 100%;
 	font-size: var(--font-medium);
 }

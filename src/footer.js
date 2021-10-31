@@ -4,7 +4,7 @@ const Footer = () => {
 	return (
 		<>
 			<section id={'email'}>
-				<p>Email <a href="mailto: info@hatzalahWOL.org" style={{ textDecoration: 'underline', color: 'white' }}>info@hatzalahWOL.org</a> for more information or to get involved</p>
+				<p>Email <a href="mailto: info@hatzalahWOL.org">info@hatzalahWOL.org</a> for more information or to get involved</p>
 			</section>
 
 			<section>
