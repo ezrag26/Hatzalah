@@ -223,11 +223,11 @@ const Header = () => {
 
 	return (
 		<>
-			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`} style={{ height: '150px' }}>
+			<div id={'header'} className={`flex flex-row align-center ${open ? 'open' : ''}`} style={{ height: '100px' }}>
 				<div id={'header__main'} className={`flex flex-row align-center`} style={{ height: '100%' }}>
 					<a className={'flex flex-row align-center normalized-a'} href={pages.home.url}>
-						<img src="assets/hatzalah-logo-transparent.png" style={{ width: '40px', height: '40px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
-						<div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>
+						<img src="assets/hatzalah-logo-transparent.png" style={{ width: '70px', height: '70px', marginRight: '1rem' }} alt={'hatzalah-wol-logo'}/>
+						{/*<div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>*/}
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
 						{!isSmallDisplay && <Nav />}

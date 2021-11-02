@@ -12,9 +12,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	background-color: var(--primary-light);
+	background-color: var(--secondary);
 	color: white;
-	height: 6em;
 }
 
 #header__secondary > * {

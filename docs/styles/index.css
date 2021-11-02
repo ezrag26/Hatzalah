@@ -4,9 +4,9 @@
 	box-sizing: border-box;
 	font-family: Optima, Platino, Raanana, Baskerville, "Malayalam MN", sans-serif;
 
-	--primary: rgb(0, 42, 81);
+	--primary: rgb(0, 33, 88);
 	--primary-light: rgb(10, 80, 133);
-	--secondary: rgba(213, 44, 31, 1);
+	--secondary: rgba(156, 40, 43, 1);
 	--grey: rgba(0, 0, 0, .1);
 
 	--font-small: .75em;
@@ -25,7 +25,7 @@
 }
 
 body {
-	background-color: var(--primary);
+	background-color: var(--secondary);
 }
 
 .flex {
