@@ -1,6 +1,6 @@
-.stack > * { margin-top: var(--spacing-medium); }
-.stack-small > * { margin-top: var(--spacing-small); }
-.stack-large > * { margin-top: var(--spacing-large); }
+.stack > *:not(:first-child) { margin-top: var(--spacing-medium); }
+.stack-small > *:not(:first-child) { margin-top: var(--spacing-small); }
+.stack-large > *:not(:first-child) { margin-top: var(--spacing-large); }
 
 .padding { padding: var(--spacing-medium); }
 .padding-small { padding: var(--spacing-small); }

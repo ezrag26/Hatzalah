@@ -1,50 +1,113 @@
 .button {
+	display: inline-block;
 	border: none;
-	padding: .5rem 1rem;
+	padding: .75rem 1.5rem;
 	cursor: pointer;
 	border-radius: 5px;
 	text-align: center;
 	white-space: nowrap;
+	color: var(--white);
 }
 
 .button:hover {
 	opacity: .9;
 }
 
-.button.filled {
+.button__bg--primary {
 	background-color: var(--primary);
-	color: white;
 }
 
+.button__bg--secondary {
+	background-color: var(--secondary);
+}
+
+.button__bg--inherit {
+	background-color: inherit;
+}
+
+.button__bg--inherit:hover {
+	background-color: var(--white);
+	color: var(--secondary);
+}
+
+.button__bg--white {
+	background-color: var(--white);
+}
+
+.button__text--primary {
+	color: var(--primary);
+}
+
+.button__text--secondary {
+	color: var(--secondary);
+}
+
+.button__text--white {
+	color: var(--white);
+}
+
+.button__border--primary {
+	border: 1px solid var(--primary);
+}
+
+.button__border--secondary {
+	border: 1px solid var(--secondary);
+}
+
+.button__border--white {
+	border: 1px solid var(--white);
+}
+
+.button--filled,
+.button.filled {
+	background-color: var(--primary);
+}
+
+.button--filled--secondary,
 .button.filled.secondary {
 	background-color: var(--secondary);
 }
 
+.button--filled--white {
+	background-color: var(--white);
+	color: var(--secondary);
+}
+
+.button--contained,
 .button.contained {
 	background-color: inherit;
 	border: 1px solid var(--primary);
 	color: var(--primary);
 }
 
+.button--contained-secondary,
 .button.contained.secondary {
 	border: 1px solid var(--secondary);
 	color: var(--secondary);
 }
 
+.button--contained-white,
 .button.contained.white {
 	border: 1px solid white;
 	color: white;
 }
 
+.button--text,
 .button.text {
 	background-color: inherit;
 	color: var(--primary);
 }
 
-.button.stretch {
+.stretch {
 	width: 100%;
 }
 
-.button.uppercase {
+.uppercase {
 	text-transform: uppercase;
+}
+
+@media screen and (min-width: 850px) {
+	.button {
+		padding: 1.25rem 3rem;
+	}
 }
