@@ -42,7 +42,7 @@ header {
 	background-color: white;
 	transition-property: opacity;
 	transition-duration:  0.25s;
-	padding: var(--spacing-small);
+	padding: var(--spacing-medium);
 	width: 100%;
 }
 
@@ -203,10 +203,6 @@ ul {
 
 	#search-results {
 		width: 75%;
-	}
-
-	#header__main {
-		padding-left: var(--spacing-small);
 	}
 
 	#curtain {
