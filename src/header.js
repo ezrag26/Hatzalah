@@ -1,33 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-const pages = {
-	home: { title: 'Home', url: `` },
-	emergency: { title: 'In Case Of Emergency', url: 'in-case-of-emergency' },
-	about: { title: 'Who We Are', url: 'who-we-are' },
-	training: { title: 'Training & Resources', url: 'training-resources' },
-	donate: { title: 'Donate', url: 'donate' }
-}
-
-const NavItem = ({ href, display }) => {
-	const baseUrl = document.querySelector('base')?.href
-	const path = window.location.href.replace(baseUrl, '')
-	const currentPage = path.replaceAll('/', '') === href
-	return <li className={`header-nav-item ${!currentPage ? 'fade' : ''}`}><a href={href}>{display}</a></li>
-}
-
-const Nav = ({ margin }) => {
-	return (
-		<nav style={{ marginTop: margin }}>
-			<ul className={'flex'}>
-				{
-					Object.values(pages).map(headerItem => {
-						return <NavItem key={headerItem.title} href={headerItem.url} display={headerItem.title}/>
-					})
-				}
-			</ul>
-		</nav>
-	)
-}
+import Nav from './Navigation/navigation'
+import { pages } from './Navigation/pages'
 
 const calcTotalElemHeight = (elem) => {
 	if (!elem) return ''
@@ -45,7 +19,7 @@ const calcTotalElemHeight = (elem) => {
 const CurtainMenu = ({ open, setOpen }) => {
 	return (
 		<div id={'curtain'} style={{ top: 0 }} className={`flex ${open ? 'open' : ''}`}>
-			<Nav margin={calcTotalElemHeight(document.getElementById('header__main'))}/>
+			<Nav margin={calcTotalElemHeight(document.getElementById('header__main'))} items={pages}/>
 		</div>
 	)
 }
@@ -230,7 +204,7 @@ const Header = () => {
 						{/*<div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>*/}
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
-						{!isSmallDisplay && <Nav />}
+						{!isSmallDisplay && <Nav items={pages} />}
 					</div>
 				</div>
 				{

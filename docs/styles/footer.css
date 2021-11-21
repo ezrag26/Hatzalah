@@ -28,6 +28,10 @@ footer > section p:not(:first-child) {
 	margin-top: 1em;
 }
 
+.icon-card > *:not(:last-child) {
+	padding-right: var(--spacing-small);
+}
+
 @media screen and (min-width: 715px) {
 	#email {
 		font-size: var(--font-large);
