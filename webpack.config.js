@@ -26,6 +26,7 @@ module.exports = {
   },
 	devServer: {
 		contentBase: path.join(__dirname, 'docs'),
+		host: '0.0.0.0', // serve to local devices
 		port: 9000,
 		writeToDisk: true
 	}
