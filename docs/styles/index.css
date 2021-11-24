@@ -50,6 +50,7 @@ body {
 
 .quote {
 	width: 85%;
+	color: var(--white);
 }
 
 .quote::before,
