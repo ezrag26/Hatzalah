@@ -1,57 +1,65 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Nav from './Navigation/navigation'
 import { pages } from './Navigation/pages'
+import { useWindowInnerWidth } from './hooks/hooks'
 
-const FlexRow = ({ children, className, justifyContent = 'center' }) => {
+const FlexRow = ({ children, id, className, style = {} }) => {
 	return (
-		<div className={className} style={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', justifyContent }}>
+		<div id={id} className={className} style={{ display: 'flex', ...style }}>
 			{children}
 		</div>
 	)
 }
 
-const FlexColumn = ({ children, className }) => {
+const FlexColumn = ({ id, children, className, style = {} }) => {
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className={className}>
+		<div id={id} className={className} style={{ display: 'flex', flexDirection: 'column', ...style }}>
 			{children}
 		</div>
 	)
 }
 
-const FaIcon = ({ icon, size = 1 }) => {
-	return <i className={`fa fa-${icon} fa-${size}x`}></i>
+const FaIcon = ({ id, className, icon, size = 1 }) => {
+	return <i id={id} className={`fa fa-${icon} fa-${size}x ${className}`}></i>
 }
 
 const Footer = () => {
+	const windowInnerWidth = useWindowInnerWidth()
+	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < 645)
+
+	useEffect(() => {
+		setIsSmallDisplay(windowInnerWidth < 645)
+	}, [isSmallDisplay, windowInnerWidth])
+
 	return (
-		<div className={'stack-large'} style={{ width: '90%', margin: 'auto', padding: '3rem 0' }}>
-			<FlexRow justifyContent={'space-between'}>
-				<FlexRow className={'icon-card'}>
+		<div id={'footer--content'} className={'stack-large'}>
+			<div id={'footer--contact'} className={'stack'}>
+				<FlexRow className={'icon-card'} style={{ alignItems: 'center' }}>
 					<FaIcon icon={'phone'} size={3}/>
-					<FlexColumn>
+					<FlexColumn style={{ justifyContent: 'space-between' }}>
 						<span>Emergency</span>
 						<a className={'normalized-a'} href={'tel:+973-604-4000'}><span style={{ color: 'var(--secondary)', fontWeight: 'bold' }} >973-604-4000</span></a>
 					</FlexColumn>
 				</FlexRow>
 
-				<FlexRow className={'icon-card'}>
+				<FlexRow className={'icon-card'} style={{ alignItems: 'center' }}>
 					<FaIcon icon={'envelope'} size={3}/>
-					<FlexColumn>
+					<FlexColumn style={{ justifyContent: 'space-between' }}>
 						<span>Email</span>
 						<a href="mailto: info@hatzalahWOL.org" className={'normalized-a'}><span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>info@hatzalahWOL.org</span></a>
 					</FlexColumn>
 				</FlexRow>
 
-				<FlexRow className={'icon-card'}>
+				<FlexRow className={'icon-card'} style={{ alignItems: 'center' }}>
 					<FaIcon icon={'map-marker'} size={3}/>
-					<FlexColumn>
+					<FlexColumn style={{ justifyContent: 'space-between' }}>
 						<span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>P.O. Box 245</span>
 						<span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>West Orange, NJ 07052</span>
 					</FlexColumn>
 				</FlexRow>
 
-				<FlexRow className={'icon-card'}>
+				<FlexRow id={'social'} style={{ alignItems: 'center' }}>
 					<a href="https://www.facebook.com/HatzalahWOL/" target="_blank" className={'normalized-a'}>
 						<FaIcon icon={'facebook-square'} size={3} />
 					</a>
@@ -59,17 +67,20 @@ const Footer = () => {
 						<FaIcon icon={'instagram'} size={3} />
 					</a>
 				</FlexRow>
-			</FlexRow>
+			</div>
 
-			<FlexRow justifyContent={'flex-start'}>
-				<Nav items={pages}/>
+			<FlexRow id={'footer--site-map'}>
+				<a className={'flex flex-row align-center normalized-a'} href={pages.home.url}>
+					<img src="assets/hatzalah-logo-transparent.png" style={{ width: '70px', height: '70px' }} alt={'hatzalah-wol-logo'}/>
+				</a>
+				<Nav items={pages} horizontal={!isSmallDisplay}/>
 				{/*iFrame for mailchimp*/}
 			</FlexRow>
 
-			<FlexColumn className={'stack-large'}>
-				<p style={{ fontSize: '.75rem' }}>Hatzalah of West Orange-Livingston is a New Jersey State Not For Profit Corporation and is a tax exempt charitable organization under IRS Section 501(c)(3). Donations are tax deductible to the maximum extent permitted by law. All donations to Hatzalah of West Orange-Livingston exclusively support the operations of Hatzalah of West Orange-Livingston in its primary operating area.</p>
+			<FlexColumn id={'footer--legal'} className={'stack-large'}>
+				<p>Hatzalah of West Orange-Livingston is a New Jersey State Not For Profit Corporation and is a tax exempt charitable organization under IRS Section 501(c)(3). Donations are tax deductible to the maximum extent permitted by law. All donations to Hatzalah of West Orange-Livingston exclusively support the operations of Hatzalah of West Orange-Livingston in its primary operating area.</p>
 
-				<p style={{ fontSize: '.75rem' }}>Hatzalah of West Orange-Livingston, by a trademark license agreement with Chevra Hatzalah, operates as an independent volunteer ambulance service. Hatzalah of West Orange-Livingston is not under the supervision of Chevra Hatzalah.</p>
+				<p>Hatzalah of West Orange-Livingston, by a trademark license agreement with Chevra Hatzalah, operates as an independent volunteer ambulance service. Hatzalah of West Orange-Livingston is not under the supervision of Chevra Hatzalah.</p>
 			</FlexColumn>
 		</div>
 	)

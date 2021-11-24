@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import Nav from './Navigation/navigation'
 import { pages } from './Navigation/pages'
+import { useWindowInnerWidth, useSmallDisplay } from './hooks/hooks'
 
 const calcTotalElemHeight = (elem) => {
 	if (!elem) return ''
@@ -19,7 +20,7 @@ const calcTotalElemHeight = (elem) => {
 const CurtainMenu = ({ open, setOpen }) => {
 	return (
 		<div id={'curtain'} style={{ top: 0 }} className={`flex ${open ? 'open' : ''}`}>
-			<Nav margin={calcTotalElemHeight(document.getElementById('header__main'))} items={pages}/>
+			<Nav style={{ marginTop: calcTotalElemHeight(document.getElementById('header__main')) }} items={pages}/>
 		</div>
 	)
 }
@@ -176,24 +177,18 @@ const Hamburger = ({ open, toggle }) => {
 const Header = () => {
 	const WIDTH_BREAKPOINT = 715
 	const [open, setOpen] = useState(false)
-	const [isSmallDisplay, setIsSmallDisplay] = useState(window.innerWidth < WIDTH_BREAKPOINT)
-	const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth)
+	const windowInnerWidth = useWindowInnerWidth()
+	const isSmallDisplay = useSmallDisplay(WIDTH_BREAKPOINT, windowInnerWidth)
 	const [headerSize, setHeaderSize] = useState(calcTotalElemHeight(document.querySelector('header')))
 	const [searchOpen, setSearchOpen] = useState(false)
 
 	useEffect(() => {
 		document.querySelectorAll('.section')[0].style.paddingTop = calcTotalElemHeight(document.querySelector('#header')) + 'px'
-
-		setIsSmallDisplay(windowInnerWidth < WIDTH_BREAKPOINT)
 	}, [isSmallDisplay, windowInnerWidth])
 
 	useEffect(() => {
 		if (!isSmallDisplay) setOpen(false)
 	}, [isSmallDisplay])
-
-	window.addEventListener('resize', () => {
-		setWindowInnerWidth(window.innerWidth)
-	})
 
 	return (
 		<>
@@ -204,7 +199,7 @@ const Header = () => {
 						{/*<div id={'company-name'} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}><span>Hatzalah of</span><span>West Orange</span><span>and Livingston</span></div>*/}
 					</a>
 					<div className={`flex flex-row`} style={{ alignItems: 'center' }}>
-						{!isSmallDisplay && <Nav items={pages} />}
+						{!isSmallDisplay && <Nav items={pages} horizontal={true} />}
 					</div>
 				</div>
 				{

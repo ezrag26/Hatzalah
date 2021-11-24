@@ -7,10 +7,10 @@ const NavItem = ({ href, display }) => {
 	return <li className={`header-nav-item ${!currentPage ? 'fade' : ''}`}><a href={href}>{display}</a></li>
 }
 
-const Nav = ({ margin, items = {} }) => {
+const Nav = ({ style = {}, id, className, horizontal = false, items = {} }) => {
 	return (
-		<nav style={{ marginTop: margin }}>
-			<ul className={'flex'}>
+		<nav id={id} className={className} style={style}>
+			<ul className={'flex'} style={{ flexDirection: horizontal ? 'row' : 'column' }}>
 				{
 					Object.values(items).map(headerItem => {
 						return <NavItem key={headerItem.title} href={headerItem.url} display={headerItem.title}/>
