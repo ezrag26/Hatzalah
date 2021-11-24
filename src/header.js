@@ -205,8 +205,8 @@ const Header = () => {
 				{
 					!isSmallDisplay &&
 					<div id={'header__secondary'} style={{ height: '100%' }}>
-						<p>Emergency: 973-604-4000</p>
-						<a href={'donate'} className={'button contained white uppercase normalized-a'}>Support Us</a>
+						<p className={'uppercase'}>Emergency: 973-604-4000</p>
+						<a href={'donate'} className={'button button__bg--white button__text--secondary uppercase normalized-a'}>Support Us</a>
 					</div>
 				}
 				{isSmallDisplay &&
