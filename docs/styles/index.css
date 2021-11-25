@@ -41,7 +41,7 @@ body {
 
 .normalized-a {
 	text-decoration: none;
-	color: black;
+	color: inherit;
 }
 
 .bold {

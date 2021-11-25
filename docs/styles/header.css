@@ -7,27 +7,6 @@
 	height: 100%;
 }
 
-#header__secondary {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-	background-color: var(--secondary);
-	color: white;
-}
-
-#header__secondary > * {
-	white-space: nowrap;
-	font-size: 1em;
-}
-
-#header__secondary p {
-	padding: 0 var(--spacing-small);
-	width: 100%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 header {
 	position: fixed;
 	top: 0;
@@ -38,12 +17,28 @@ header {
 	box-shadow: 0px 0px 12px -5px black;
 }
 
+#header {
+	background-color: var(--secondary);
+}
+
+#header > *:not(#hamburger) {
+	padding: var(--spacing-medium);
+}
+
+#header .button {
+	display: none;
+}
+
 #header__main {
 	background-color: white;
 	transition-property: opacity;
 	transition-duration:  0.25s;
 	padding: var(--spacing-medium);
 	width: 100%;
+}
+
+#header__secondary {
+	display: none;
 }
 
 #curtain {
@@ -171,27 +166,6 @@ ul {
 	border-top: none;
 }
 
-@media screen and (min-width: 450px) {
-	#header__secondary {
-		flex-direction: row;
-		/* flex-grow: 1; */
-		padding: 0 .75em;
-	}
-
-	#header__secondary > p {
-		padding: 0;
-		width: auto;
-		white-space: nowrap;
-		text-overflow: clip;
-		overflow: auto;
-	}
-
-	#header__secondary > .button {
-		margin: 0;
-		margin-left: var(--spacing-large);
-	}
-}
-
 @media screen and (min-width: 715px) {
 	#search > :first-child {
 		display: initial;
@@ -220,10 +194,6 @@ ul {
 		justify-content: space-between;
 	}
 
-	#header__secondary {
-		padding: 0 2em;
-	}
-
 	nav {
 		width: auto;
 	}
@@ -237,14 +207,21 @@ ul {
 	}
 }
 
-@media screen and (min-width: 990px) {
-	#header #company-name {
-		display: initial;
+@media screen and (min-width: 915px) {
+	#header__secondary {
+		display: flex;
+		align-items: center;
+		color: white;
+	}
+
+	#header__secondary > p {
+		white-space: nowrap;
 	}
 }
 
-@media screen and (min-width: 1130px) {
-	#header #company-name {
-		font-size: var(--font-medium);
+@media screen and (min-width: 1110px) {
+	#header__secondary > .button {
+		display: initial;
+		margin-left: var(--spacing-large);
 	}
 }
