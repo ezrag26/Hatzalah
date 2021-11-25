@@ -78,6 +78,10 @@ footer nav ul {
 		margin: initial;
 	}
 
+	#footer--social > * {
+		margin-right: 0.5rem;
+	}
+
 	.icon-card .fa {
 		width: initial;
 	}

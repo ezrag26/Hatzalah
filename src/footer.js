@@ -59,7 +59,7 @@ const Footer = () => {
 					</FlexColumn>
 				</FlexRow>
 
-				<FlexRow id={'social'} style={{ alignItems: 'center' }}>
+				<FlexRow id={'footer--social'} style={{ alignItems: 'center' }}>
 					<a href="https://www.facebook.com/HatzalahWOL/" target="_blank" className={'normalized-a'}>
 						<FaIcon icon={'facebook-square'} size={3} />
 					</a>
