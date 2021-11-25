@@ -40,7 +40,10 @@ footer nav {
 }
 
 #footer--contact,
-footer nav ul,
+footer nav ul {
+	font-size: var(--font-medium);
+}
+
 #footer--legal {
 	font-size: var(--font-small);
 }
