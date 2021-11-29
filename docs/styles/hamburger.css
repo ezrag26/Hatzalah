@@ -1,0 +1,72 @@
+#hamburger {
+	position: absolute;
+	right: 15px;
+  height: 19px;
+  width: 30px;
+	z-index: calc(var(--curtain-z) + 1);
+	cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--primary);
+}
+
+#bar__middle {
+  position: absolute;
+	top: 45%; /* using the `top: 50%, transform: tanslate(-50%)` trick was not looking right */
+}
+
+#bar__middle--front,
+#bar__middle--back {
+  position: absolute;
+  top: 0;
+}
+
+#bar__bottom { /* same effect as the width collapsing to right, like the top bar collapses to left */
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+#bar__top,
+#bar__bottom {
+  transition-property: width;
+}
+
+#bar__middle--front,
+#bar__middle--back {
+  transition-property: transform;
+}
+
+#bar__top,
+#bar__bottom,
+#bar__middle--front,
+#bar__middle--back {
+	transition-duration: 0.3s;
+}
+
+#bar__top.delay,
+#bar__bottom.delay,
+#bar__middle--front.delay,
+#bar__middle--back.delay {
+  transition-delay: 0.3s;
+}
+
+.collapse {
+	width: 0;
+}
+
+.rotate--clockwise,
+.rotate--counter-clockwise {
+	background-color: white;
+}
+
+.rotate--clockwise {
+	transform: rotate(45deg);
+}
+
+.rotate--counter-clockwise {
+	transform: rotate(-45deg);
+}

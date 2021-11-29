@@ -1,31 +1,89 @@
 footer {
-	display: flex;
-	flex-direction: column;
+	background-color: white;
 }
 
-footer > section {
-	width: 80%;
-	margin: 0 auto;
-	padding: 1em;
-}
-
-#email {
-	background-color: var(--primary);
-	color: white;
-	width: 100%;
-	font-size: var(--font-medium);
-}
-
-footer > section p {
+footer nav {
 	text-align: center;
 }
 
-footer > section p:not(:first-child) {
-	margin-top: 1em;
+#footer--content,
+#footer--contact,
+#footer--social,
+#footer--site-map {
+	display: flex;
+}
+
+#footer--content,
+#footer--contact,
+#footer--site-map {
+	flex-direction: column;
+}
+
+#footer--content,
+#footer--site-map {
+	align-items: center;
+}
+
+#footer--social {
+	justify-content: space-around;
+}
+
+#footer--content {
+	width: 90%;
+	margin: auto;
+	padding: 3rem 0;
+}
+
+#footer--content > *:not(:first-child) {
+	/* border-top: solid 1px var(--grey); */
+	padding-top: var(--spacing-large);
+}
+
+#footer--contact,
+footer nav ul {
+	font-size: var(--font-small);
+}
+
+#footer--legal {
+	font-size: var(--font-xsmall);
+}
+
+.icon-card > *:not(:last-child) {
+	margin-right: var(--spacing-small);
+}
+
+.icon-card .fa {
+	width: 60px;
+	text-align: right;
 }
 
 @media screen and (min-width: 715px) {
-	#email {
-		font-size: var(--font-large);
+	#footer--content {
+		align-items: stretch;
+	}
+
+	#footer--contact {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	#footer--contact > * {
+		margin: initial;
+	}
+
+	#footer--social > * {
+		margin-right: 0.5rem;
+	}
+
+	.icon-card .fa {
+		width: initial;
+	}
+
+	#footer--site-map {
+		flex-direction: row;
+	}
+
+	#footer--site-map img {
+		margin-right: var(--spacing-medium);
 	}
 }

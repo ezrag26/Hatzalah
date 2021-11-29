@@ -4,19 +4,22 @@
 	box-sizing: border-box;
 	font-family: Optima, Platino, Raanana, Baskerville, "Malayalam MN", sans-serif;
 
-	--primary: rgba(0, 33, 88, 1);
-	--secondary: rgba(213, 44, 31, 1);
+	--primary: rgb(0, 33, 88);
+	--primary-light: rgb(10, 80, 133);
+	--secondary: rgba(156, 40, 43, 1);
 	--grey: rgba(0, 0, 0, .1);
+	--white: white;
 
-	--font-small: .75em;
-	--font-medium: 1em;
-	--font-large: 1.5em;
-	--font-xlarge: 2em;
+	--font-xsmall: .75rem;
+	--font-small: 1rem;
+	--font-medium: 1.25rem;
+	--font-large: 1.5rem;
+	--font-xlarge: 2rem;
 
-	--spacing-small: .5em;
-	--spacing-medium: 1em;
-	--spacing-large: 1.5em;
-	--spacing-xlarge: 2em;
+	--spacing-small: .5rem;
+	--spacing-medium: 1rem;
+	--spacing-large: 1.5rem;
+	--spacing-xlarge: 2rem;
 }
 
 .hidden {
@@ -24,7 +27,7 @@
 }
 
 body {
-	background-color: white;
+	background-color: var(--secondary);
 }
 
 .flex {
@@ -39,7 +42,7 @@ body {
 
 .normalized-a {
 	text-decoration: none;
-	color: black;
+	color: inherit;
 }
 
 .bold {
@@ -48,6 +51,7 @@ body {
 
 .quote {
 	width: 85%;
+	color: var(--white);
 }
 
 .quote::before,
