@@ -48,7 +48,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************************/
 /***/ ((module) => {
 
-eval("module.exports = {\n  pages: {\n    home: {\n      title: 'Home',\n      url: \"\"\n    },\n    emergency: {\n      title: 'In Case Of Emergency',\n      url: 'in-case-of-emergency'\n    },\n    about: {\n      title: 'Who We Are',\n      url: 'who-we-are'\n    },\n    training: {\n      title: 'Training & Resources',\n      url: 'training-resources'\n    },\n    donate: {\n      title: 'Donate',\n      url: 'donate'\n    }\n  }\n};\n\n//# sourceURL=webpack://hatzalah/./src/Navigation/pages.js?");
+eval("module.exports = {\n  pages: {\n    home: {\n      title: 'Home',\n      url: \"\"\n    },\n    emergency: {\n      title: 'In Case Of Emergency',\n      url: 'in-case-of-emergency'\n    },\n    about: {\n      title: 'Who We Are',\n      url: 'who-we-are'\n    },\n    cpr: {\n      title: 'CPR',\n      url: 'cpr'\n    },\n    training: {\n      title: 'Resources',\n      url: 'resources'\n    },\n    donate: {\n      title: 'Donate',\n      url: 'donate'\n    }\n  }\n};\n\n//# sourceURL=webpack://hatzalah/./src/Navigation/pages.js?");
 
 /***/ }),
 
