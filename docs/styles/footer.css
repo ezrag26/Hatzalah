@@ -41,11 +41,11 @@ footer nav {
 
 #footer--contact,
 footer nav ul {
-	font-size: var(--font-medium);
+	font-size: var(--font-small);
 }
 
 #footer--legal {
-	font-size: var(--font-small);
+	font-size: var(--font-xsmall);
 }
 
 .icon-card > *:not(:last-child) {
@@ -55,13 +55,6 @@ footer nav ul {
 .icon-card .fa {
 	width: 60px;
 	text-align: right;
-}
-
-@media screen and (min-width: 645px) {
-	#footer--contact,
-	footer nav ul {
-		font-size: var(--font-medium);
-	}
 }
 
 @media screen and (min-width: 715px) {

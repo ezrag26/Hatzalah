@@ -10,15 +10,16 @@
 	--grey: rgba(0, 0, 0, .1);
 	--white: white;
 
-	--font-small: .75em;
-	--font-medium: 1em;
-	--font-large: 1.5em;
-	--font-xlarge: 2em;
+	--font-xsmall: .75rem;
+	--font-small: 1rem;
+	--font-medium: 1.25rem;
+	--font-large: 1.5rem;
+	--font-xlarge: 2rem;
 
-	--spacing-small: .5em;
-	--spacing-medium: 1em;
-	--spacing-large: 1.5em;
-	--spacing-xlarge: 2em;
+	--spacing-small: .5rem;
+	--spacing-medium: 1rem;
+	--spacing-large: 1.5rem;
+	--spacing-xlarge: 2rem;
 }
 
 .hidden {
