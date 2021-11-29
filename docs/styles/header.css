@@ -50,6 +50,7 @@ header {
 	transition-duration: 0.25s;
 	background-color: var(--primary);
 	padding: var(--spacing-small) var(--spacing-xlarge);
+	overflow-x: auto;
 }
 
 #header.open #curtain {
