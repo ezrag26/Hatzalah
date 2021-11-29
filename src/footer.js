@@ -37,7 +37,7 @@ const Footer = () => {
 			<div id={'footer--contact'} className={'stack'}>
 				<FlexRow className={'icon-card'} style={{ alignItems: 'center' }}>
 					<FaIcon icon={'phone'} size={3}/>
-					<FlexColumn style={{ justifyContent: 'space-between' }}>
+					<FlexColumn style={{ justifyContent: 'space-around', height: '100%' }}>
 						<span>Emergency</span>
 						<a className={'normalized-a'} href={'tel:+973-604-4000'}><span style={{ color: 'var(--secondary)', fontWeight: 'bold' }} >973-604-4000</span></a>
 					</FlexColumn>
@@ -45,7 +45,7 @@ const Footer = () => {
 
 				<FlexRow className={'icon-card'} style={{ alignItems: 'center' }}>
 					<FaIcon icon={'envelope'} size={3}/>
-					<FlexColumn style={{ justifyContent: 'space-between' }}>
+					<FlexColumn style={{ justifyContent: 'space-around', height: '100%' }}>
 						<span>Email</span>
 						<a href="mailto: info@hatzalahWOL.org" className={'normalized-a'}><span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>info@hatzalahWOL.org</span></a>
 					</FlexColumn>
@@ -53,7 +53,7 @@ const Footer = () => {
 
 				<FlexRow className={'icon-card'} style={{ alignItems: 'center' }}>
 					<FaIcon icon={'map-marker'} size={3}/>
-					<FlexColumn style={{ justifyContent: 'space-between' }}>
+					<FlexColumn style={{ justifyContent: 'space-around', height: '100%' }}>
 						<span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>P.O. Box 245</span>
 						<span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>West Orange, NJ 07052</span>
 					</FlexColumn>
