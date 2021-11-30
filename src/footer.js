@@ -39,7 +39,7 @@ const Footer = () => {
 					<FaIcon icon={'phone'} size={3}/>
 					<FlexColumn style={{ justifyContent: 'space-around', height: '100%' }}>
 						<span>Emergency</span>
-						<a className={'normalized-a'} href={'tel:+973-604-4000'}><span style={{ color: 'var(--secondary)', fontWeight: 'bold' }} >973-604-4000</span></a>
+						<a className={'normalized-a'} href={'tel:+1-973-604-4000'}><span style={{ color: 'var(--secondary)', fontWeight: 'bold' }} >973-604-4000</span></a>
 					</FlexColumn>
 				</FlexRow>
 

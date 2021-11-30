@@ -69,14 +69,14 @@ const Header = () => {
 					</div>
 					<div className={`flex flex-row`} style={{ width: '100%', alignItems: 'center', justifyContent: 'center', paddingRight: '2rem', color: 'var(--secondary)' }}>
 					{
-						isSmallDisplay && <p className={'uppercase'}>Emergency: <a href="tel:+973-604-4000" className={'normalized-a'}>973-604-4000</a></p>
+						isSmallDisplay && <p className={'uppercase'}>Emergency: <a href="tel:+1-973-604-4000" className={'normalized-a'}>973-604-4000</a></p>
 					}
 					</div>
 				</div>
 				{
 					!isSmallDisplay &&
 					<div id={'header__secondary'}>
-						<p className={'uppercase'}>Emergency: <a href="tel:+973-604-4000" className={'normalized-a'} style={{ color: 'var(--white)' }}>973-604-4000</a></p>
+						<p className={'uppercase'}>Emergency: <a href="tel:+1-973-604-4000" className={'normalized-a'} style={{ color: 'var(--white)' }}>973-604-4000</a></p>
 						<a href={'donate'} className={'button button__bg--white button__text--secondary uppercase normalized-a'}>Support Us</a>
 					</div>
 				}
